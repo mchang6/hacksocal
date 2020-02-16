@@ -19,10 +19,11 @@
                 border: none;
                 cursor: pointer;
                 width: 10%;
+                font-size: 18px; /* Increase font size */
                 }
                    /* Full-width input fields */
                    input {
-                width: 75%;
+                width: 30%;
                 padding: 12px 20px;
                 margin: 8px 0;
                 border: 1px solid #ccc;
@@ -80,12 +81,12 @@
             </p>
           </div></center>
           </p>
-          <p>
+          <center><p>
             Upload an image:
-            <input type="file" id="image-upload" />
-            <button onclick="submitImage();">Submit Image</button>
+            <input type="file" id="image-upload"/>
+            <button id="submitButton" onclick="submitImage();" >Submit</button>
 
-          </p>
+          </p></center>
           
 
              <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -150,6 +151,7 @@
                 pictureIDs: firebase.firestore.FieldValue.arrayUnion(randomID.toString()),
               }, { merge: true });
             });
+            alert("Image Submitted!");
           }
         </script>         
            
@@ -158,6 +160,11 @@
            
                  <div class="mySlides fade">
                    <!--<img src="userImage" style="width:100%">-->
+                   <style >mark { 
+                    background-color: rgb(94, 93, 93);
+                    color: white;
+                   } </style>
+
                    <div class="text"> <mark>Los Angeles</mark> </div>
                    <div id="image-slides"></div>
                  </div>
