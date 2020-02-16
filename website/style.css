@@ -1,7 +1,7 @@
 /* CSS files add styling rules to your content */
 body {
   font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  /*margin: 2em;*/
 }
 
 h1 {
@@ -128,6 +128,7 @@ h1 {
 .listItem {
   padding-top: 20px;
   font-family: "Comic Sans MS", cursive, sans-serif;
+  list-style-type: none;
 }
 
 #textBox {
