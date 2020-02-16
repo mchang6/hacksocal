@@ -10,6 +10,10 @@ h1 {
   color: #373fff;
 }
 
+/*.state {
+  position: absolute;
+}*/
+
 #LA {
   position: absolute;
   left: 450px;
@@ -44,4 +48,58 @@ h1 {
   position: absolute;
   left: 410px;
   top: 660px;
+}
+
+#Honolulu {
+  position: absolute;
+  left: 350px;
+  top: 165px;
+}
+
+#Kailua-Kona {
+  position: absolute;
+  left: 645px;
+  top: 420px;
+}
+
+#Hilo {
+  position: absolute;
+  left: 760px;
+  top: 400px;
+}
+
+#Detroit {
+  position: absolute;
+  left: 760px;
+  top: 400px;
+}
+
+#AnnArbor {
+  position: absolute;
+  left: 760px;
+  top: 400px;
+}
+
+#TraverseCity {
+  position: absolute;
+  left: 760px;
+  top: 400px;
+}
+
+#AtlanticCity{
+  position: absolute;
+  left: 480px;
+  top: 600px;
+}
+
+#Hoboken{
+  position: absolute;
+  left: 560px;
+  top: 250px;
+}
+
+#OceanCity{
+  position: absolute;
+  left: 440px;
+  top: 670px;
 }
