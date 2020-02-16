@@ -1,4 +1,9 @@
 /* CSS files add styling rules to your content */
+u + .body .glist { margin-left: 0 !important; }
+
+@media only screen and (max-width: 640px) {
+  u + .body .glist { margin-left: 25px !important; }
+}
 
 body {
   font-family: helvetica, arial, sans-serif;
