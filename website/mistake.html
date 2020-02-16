@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file! -->
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <h1>Hi there! Main Page</h1>
+    <p>
+      <input placeholder= "This will be uploaded" id = "input">
+      <button onclick = "uploadData()">
+        Click Me
+      </button>
+    </p>
+
+      <p>
+      Sign In
+    </p>
+    <p>
+      <input id="email" placeholder="Email Address"/>
+      <input id="password" placeholder="Password" type = "password"/>
+      <button onclick="signUp()">
+        Sign Up
+      </button>
+    </p>
+    <p>
+      <input id="email-sign-in" placeholder="Email Address"/>
+      <input id="password-sign-in" placeholder="Password" type = "password"/>
+      <button onclick="signIn()">
+        Sign In
+      </button>
+    </p>
+    
+    <p>
+      
+      Your Items
+      <ul id="list">
+        <li></li>
+    </ul>
+    </p>
+  
+  <p>
+    <button onclick="signOut()">
+      Sign Out
+    </button>
+  </p>
+
+  <iframe src="https://createaclickablemap.com/map.php?&id=88852&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
+<script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBkmFFdhRFllv8vNwdUJ_SbUl4QYtd5bsc",
+    authDomain: "hack-socal.firebaseapp.com",
+    databaseURL: "https://hack-socal.firebaseio.com",
+    projectId: "hack-socal",
+    storageBucket: "hack-socal.appspot.com",
+    messagingSenderId: "331735296491",
+    appId: "1:331735296491:web:0c84981e1b074a013a51ae"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  let uid;
+  
+  function uploadData()
+  {
+    let element = document.getElementByID("input").value;
+    firebase.firestore().collection("users").doc(uid).collection("text").add({
+      text:value,
+    });
+  }
+  
+  function signUp()
+  {
+    let email = document.getElementByID("email").value;
+    let password = document.getElementByID("password").value;
+    
+    firebase.auth().createUserWithEmailAndPassword(email,password);
+    alert("Signed Up!");
+  }
+  
+  function signIn()
+  {
+    let email = document.getElementByID("email-sign-in").value;
+    let password = document.getElementByID("password-sign-in").value;
+    
+    firebase.auth().signInWithEmailAndPassword(email, password);
+  }
+
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+    alert("Test");  
+    uid = user.uid;
+    
+    firebase.firestore().collection("users").doc(uid).collection("text").onSnapshot(function(snapshot)){
+      snapshot.forEach(function(document){
+        newList = "";
+        newList +='<li>' + document.data().text+"</li>";
+      })
+      document.getElementById("list").innerHTML = newList;
+    })
+  })  
+  function signOut()
+  {
+    if(user)
+      {
+        alert("Signed Out");
+      }
+  }
+  
+</script>
+  </body>
+</html>
