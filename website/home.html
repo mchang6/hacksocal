@@ -164,6 +164,7 @@
         {
           document.getElementById("initial").style.display = "inline-block";
           document.getElementById("create").style.display = "none";
+          firebase.auth.signOut();
         }
         function createAccount()
         {
@@ -178,9 +179,9 @@
 
       <div id="id01" class="modal">
         
-        <!--<form class="modal-content animate" action="/action_page.php" method="post">-->
+        <form class="modal-content animate" action="/action_page.php" method="post">
           <div class="imgcontainer">
-          <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>-->
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="images/Bool_black.png" alt="Avatar" class="avatar">
           </div>
 
@@ -307,10 +308,6 @@
     firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
         window.location.replace("map.html");  
-          }
-          else
-          {
-            alert("Not Signed In");
           }
         })
 
