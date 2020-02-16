@@ -8,37 +8,24 @@
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
-    
+    <style>
+      
+      </style>
+
     <!-- import the webpage's javascript file! -->
     <script src="/script.js" defer></script>
   </head>  
   <body>
-    <h1>Hi there! Main Page</h1>
-    <p>
+    <h1>Welcome to TravelPix!</h1>
+
+    <button onclick="signOut()" id="myBtn" style="display: block;">Sign Out</button>
+    <!--<p>
       <input placeholder= "This will be uploaded" id = "input">
       <button onclick = "uploadData()">
         Click Me
       </button>
     </p>
 
-      <p>
-      Sign In
-    </p>
-    <p>
-      <input id="email" placeholder="Email Address"/>
-      <input id="password" placeholder="Password" type = "password"/>
-      <button onclick="signUp()">
-        Sign Up
-      </button>
-    </p>
-    <p>
-      <input id="email-sign-in" placeholder="Email Address"/>
-      <input id="password-sign-in" placeholder="Password" type = "password"/>
-      <button onclick="signIn()">
-        Sign In
-      </button>
-    </p>
-    
     <p>
       
       Your Items
@@ -51,9 +38,9 @@
     <button onclick="signOut();">
       Sign Out
     </button>
-  </p>
+  </p> -->
 
-  <center><iframe src="https://createaclickablemap.com/map.php?&id=88857&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
+  <center><iframe src="https://createaclickablemap.com/map.php?&id=88861&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
     <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -122,11 +109,7 @@
   })  */
   function signOut()
   {
-    //if(user)
-     // {
-        firebase.auth.signOut();
         window.location.replace("home.html");
-     // }
   }
   
 </script>
