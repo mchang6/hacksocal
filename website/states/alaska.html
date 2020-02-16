@@ -62,6 +62,7 @@
         <img class="state" src="../images/AlaskaBlack.png" alt="Map of Alaska" height="567" width="1079">
         <br><br><br>
     </body>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     * {box-sizing: border-box}
@@ -223,51 +224,23 @@
             dots[slideIndex-1].className += " active";
             setTimeout(showSlides, 5000); // Change image every 5 seconds
           }
+        </script>
 
-          
-          </script>
-            <br><br><br>
-            <center><h1>Travel Tips & Feedback</h2></center>
-           <center><div class="feedback"> 
-            <input placeholder= "Would you like to share any travel tips or feedback?" id = "input">
-            <button onclick = "uploadData()" id="submitButton" style ="display:inline">
-                Submit 
-            </button></center>
-        </div>    
-            <!-- The core Firebase JS SDK is always required and must be listed first -->
-          <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
-        
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-             https://firebase.google.com/docs/web/setup#available-libraries -->
-             <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
-             <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
-        
-        <script>
-          // Your web app's Firebase configuration
-          var firebaseConfig = {
-            apiKey: "AIzaSyBkmFFdhRFllv8vNwdUJ_SbUl4QYtd5bsc",
-            authDomain: "hack-socal.firebaseapp.com",
-            databaseURL: "https://hack-socal.firebaseio.com",
-            projectId: "hack-socal",
-            storageBucket: "hack-socal.appspot.com",
-            messagingSenderId: "331735296491",
-            appId: "1:331735296491:web:0c84981e1b074a013a51ae"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-        </script>
-        
-        <script>
-          let state=Alaska;
-          let uid;
-          
-          function uploadData()
-          {
-            let element = document.getElementByID("input").value;
-            firebase.firestore().collection("states").doc(state).collection("text").add({
-              text:value,
-            });
-          }
-        </script>
-          </body>
+        <div class="footer">
+          <div class="row">
+            <div class="column">
+              <p class="footerTitle">TravelPix</p>
+              <p> PVNet Suite 229 <br> 550 Deep Valley Drive, <br> Rolling Hills Estates, CA <br> 90274 </p>
+            </div>
+            <div class="column">
+              <p class="footerTitle">Contact Us</p>
+              <p>1-909-768-4118</p>
+              <p>info@travelpix.org</p>
+            </div>
+            <div class="column">
+              <img class="logo" src="/images/Bool_black.png" width="190px" height="190px">
+            </div>
+          </div>
+        </div>
+      </body>
 </html>
