@@ -46,6 +46,8 @@
                border-radius: 10px; /* Rounded corners */
                font-size: 18px; /* Increase font size */
              }; /* Increase font size */
+
+             
         </style>
         <!-- import the webpage's javascript file! -->
         <script src="../script.js" defer></script>
@@ -67,10 +69,19 @@
          <p>
       
             <center><h2>Community Discussion on Los Angeles, California:</h2></center>
+          <div id="textBox">
             <ul id="list" text-align: left>
               
-          </ul>
+            </ul>
+          </div>
           </p>
+          <p>
+            Upload an image:
+            <input type="file" id="image-upload" />
+            <button onclick="submitImage();">Submit Image</button>
+
+          </p>
+          
 
              <!-- The core Firebase JS SDK is always required and must be listed first -->
            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -79,6 +90,7 @@
               https://firebase.google.com/docs/web/setup#available-libraries -->
               <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
               <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
          
          <script>
            // Your web app's Firebase configuration
@@ -102,7 +114,7 @@
             let newList = '';
 
             snapshot.forEach(function (document) {
-              newList += '<li>' + document.data().text + '</li>';
+              newList += '<li class="listItem">' + document.data().text + '</li>';
             })
 
             document.getElementById('list').innerHTML = newList;
@@ -118,13 +130,87 @@
             let newList = '';
 
             snapshot.forEach(function (document) {
-              newList += '<li>' + document.data().text + '</li>';
+              newList += '<li class="listItem">' + document.data().text + '</li>';
             })
 
             document.getElementById('list').innerHTML = newList;
           })}
+
+
+          function submitImage() {
+            let file = document.getElementById('image-upload').files[0];
+            let randomID = Math.floor(Math.random() * 10000000)
+            firebase.storage().ref().child('californiaLA/' + randomID).put(file);
+          }
         </script>         
-           </body>
- </html>
-    </body>
+           
+               
+               <div class="slideshow-container">
+           
+                 <div class="mySlides fade">
+                   <!--<img src="userImage" style="width:100%">-->
+                   <div class="text"> <mark>Los Angeles</mark> </div>
+                 </div>
+                 </div>
+                 <br>
+                 
+                 <div style="text-align:center">
+                   <span class="dot"></span> 
+                   <span class="dot"></span> 
+                   <span class="dot"></span> 
+                 </div>
+                 
+                 <script>
+                 var slideIndex = 0;
+                 fillSlides();
+                 showSlides();
+
+                 function fillSlides()
+                 {
+                  firebase.storage().collection('californiaLA').onSnapshot(function (snapshot) {
+                  let newImage = '';
+
+                  snapshot.forEach(function (file) {
+                    newImage += '<img src="listItem">' + document.files();
+                  })
+
+                  document.getElementById('mySlides').innerHTML = newImage;
+          })}
+                 
+                 function showSlides() {
+                   var i;
+                   var slides = document.getElementsByClassName("mySlides");
+                   var dots = document.getElementsByClassName("dot");
+                   for (i = 0; i < slides.length; i++) {
+                     slides[i].style.display = "none";  
+                   }
+                   slideIndex++;
+                   if (slideIndex > slides.length) {slideIndex = 1}    
+                   for (i = 0; i < dots.length; i++) {
+                     dots[i].className = dots[i].className.replace(" active", "");
+                   }
+                   slides[slideIndex-1].style.display = "block";  
+                   dots[slideIndex-1].className += " active";
+                   setTimeout(showSlides, 5000); // Change image every 5 seconds
+                 }
+           
+                 </script>
+
+                <div class="footer">
+                  <div class="row">
+                    <div class="column">
+                      <p class="footerTitle">TravelPix</p>
+                      <p> PVNet Suite 229 <br> 550 Deep Valley Drive, <br> Rolling Hills Estates, CA <br> 90274 </p>
+                    </div>
+                    <div class="column">
+                      <p class="footerTitle">Contact Us</p>
+                      <p>1-909-768-4118</p>
+                      <p>info@travelpix.org</p>
+                    </div>
+                    <div class="column">
+                      <img class="logo" src="/images/Bool_black.png" width="190px" height="190px">
+                    </div>
+                  </div>
+                </div>
+           </body> 
 </html>
