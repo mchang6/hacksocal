@@ -3,3 +3,8 @@
 
 // prints "hi" in the browser's dev tools console
 console.log("hi");
+
+function signOut()
+{
+    window.location.replace("/map.html");
+}

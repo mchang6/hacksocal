@@ -8,13 +8,34 @@
     
         <!-- import the webpage's stylesheet -->
         <link rel="stylesheet" href="../style.css">
-    
+        <style>
+          #myBtn:hover {
+           background-color: #555; /* Add a dark-grey background on hover */
+         }
+         #myBtn { 
+             position: fixed; /* Fixed/sticky position */
+             top: 20px; /* Place the button at the bottom of the page */
+             right: 30px; /* Place the button 30px from the right */
+             z-index: 99; /* Make sure it does not overlap */
+             border: none; /* Remove borders */
+             outline: none; /* Remove outline */
+             background-color:  #5A7D7C;/* Set a background color */
+             color: white; /* Text color */
+             cursor: pointer; /* Add a mouse pointer on hover */
+             padding: 15px; /* Some padding */
+             border-radius: 10px; /* Rounded corners */
+             font-size: 18px; /* Increase font size */
+           }; /* Increase font size */
+       </style>
         <!-- import the webpage's javascript file! -->
         <script src="../script.js" defer></script>
     </head>
     
     <body>
         <h1> Welcome to Arizona! </h1>
+        <p>
+          <button onclick="signOut()" id="myBtn" style="display: block;">Map</button>
+        </p>
         <img src="../images/Arizona.png" alt="Map of Arizona" height="712" width="550">
         <a href="./TesterContentPage.html"> <img id="GrandCanyon" src="../images/redDot.png" alt="Red dot" height="20" width="20"> </a>
         <a href="./TesterContentPage.html"> <img id="Phoenix" src="../images/redDot.png" alt="Red dot" height="20" width="20"> </a>
@@ -187,4 +208,3 @@
           </script>
           
           </body>
-</html>
