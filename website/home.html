@@ -4,7 +4,14 @@
         body, html {
             height: 100%;
           }
-
+          .initial
+          {
+            display: inline-block;
+          }
+          .create
+          {
+            display: none;
+          }
           .parallax {
             /* The image used */
             background-image: url("images/CaliforniaSD.jpg");
@@ -50,14 +57,13 @@
 
         #specialButton {
           width: 40%;
-          margin: 30 px;
+          display: inline-block;
         }
       /* Full-width input fields */
         input[type=text], input[type=password] {
           width: 100%;
           padding: 12px 20px;
           margin: 8px 0;
-          display: inline-block;
           border: 1px solid #ccc;
           box-sizing: border-box;
         }
@@ -74,7 +80,7 @@
         }
 
         img.avatar {
-          width: 10%;
+          width: 20%;
           border-radius: 50%;
         }
 
@@ -95,11 +101,10 @@
           left: 0;
           top: 0;
           width: 100%; /* Full width */
-          height: 100%;
+          height: auto;
           overflow: auto; /* Enable scroll if needed */
           background-color: rgb(0,0,0); /* Fallback color */
           background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-          padding-top: 60px;
         }
 
         /* Modal Content/Box */
@@ -153,34 +158,60 @@
           }
         }
       </style>
+      <script>
+
+        function start()
+        {
+          document.getElementById("initial").style.display = "inline-block";
+          document.getElementById("create").style.display = "none";
+        }
+        function createAccount()
+        {
+          document.getElementById("initial").style.display = "none";
+          document.getElementById("create").style.display = "inline-block";
+        }
+
+        </script>
     </head>
-    <body>
+    <body onload="start();">
       <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="myBtn">Sign In</button>
 
       <div id="id01" class="modal">
         
-        <form class="modal-content animate" action="/action_page.php" method="post">
+        <!--<form class="modal-content animate" action="/action_page.php" method="post">-->
           <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <!--  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>-->
             <img src="images/Bool_black.png" alt="Avatar" class="avatar">
           </div>
 
           <div class="container">
-            <label for="email"><b>Username</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required id="email-address-sign-in" type="email">
+            <label for="email"><b>Email</b></label>
+            <!-- signing in -->
+            <input type="text" placeholder="Enter Email" name="email"  id="email-address-sign-in" type="email" class="initial">
+            <!-- creating account-->
+            <input type="text" placeholder="Enter Email" name="email" id="email-address" type="email" class="create">
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" id="password-sign-in" type="password">
-              
-            <button onclick="signIn();">Sign In</button>
+            
+            <!--when signing in--> 
+            <input type="password" placeholder="Enter Password" name="psw" id="password-sign-in" type="password" class="initial">
+            
+            <!--when creating account-->
+            <input type="password" placeholder="Create Password" name="psw"  id="password" type="password" class="create">
+            
+            <button onclick="signIn();" class="initial">Sign In</button>
+            <button onclick="signUp();" class="create">Create Account</button>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
             
             <div class="w3-show-inline-block">
               <div class="w3-bar">
-                <button id ="specialButton" onclick="createAccount();" align="left">Create An Account</button>
-                <button id ="specialButton" onclick="forgotPassword();" align="right">Forgot Password?</button>
+               
+                  <button id ="specialButton" onclick="createAccount();" align="left" class="initial">Create an Account</button>
+                  <button id ="specialButton" onclick="forgotPassword();" style="float: right;" class="initial">Forgot Password?</button>
+                  
+                  <center><button onclick="start();" class = "create">Already Have an Account?</button></center>
               </div>
             
             </div> 
