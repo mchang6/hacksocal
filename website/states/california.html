@@ -17,7 +17,7 @@
     <body>
         <h1> Welcome to California! </h1>
         <img src="../images/CaliforniaBlack.png" alt="Map of California" height="800" width="800>
-        <a href="/testerContentPage.html"> <img src="../images/redDot.png" alt="Red dot" height="20" width="20"></a>
+        <a href="/TesterContentPage.html"> <img id="LA" src="../images/redDot.png" alt="Red dot" height="20" width="20"> </a>
     </body>
 
 
@@ -102,9 +102,9 @@
       /* Fading animation */
       .fade {
         -webkit-animation-name: fade;
-        -webkit-animation-duration: 1.5s;
+        -webkit-animation-duration: 1s;
         animation-name: fade;
-        animation-duration: 1.5s;
+        animation-duration: 1s;
       }
       
       @-webkit-keyframes fade {
@@ -208,7 +208,7 @@
           }
           slides[slideIndex-1].style.display = "block";  
           dots[slideIndex-1].className += " active";
-          setTimeout(showSlides, 3000); // Change image every 3 seconds
+          setTimeout(showSlides, 4000); // Change image every 4 seconds
         }
         </script>
   
