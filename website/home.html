@@ -36,7 +36,21 @@
           border-radius: 10px; /* Rounded corners */
           font-size: 18px; /* Increase font size */
       }
+      
+      /* Set a style for all buttons */
+        button {
+          background-color: #5A7D7C;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+        }
 
+        #specialButton {
+          width: 50%;
+        }
       /* Full-width input fields */
         input[type=text], input[type=password] {
           width: 100%;
@@ -80,7 +94,7 @@
           left: 0;
           top: 0;
           width: 100%; /* Full width */
-          height: 100%; /* Full height */
+          height: auto;
           overflow: auto; /* Enable scroll if needed */
           background-color: rgb(0,0,0); /* Fallback color */
           background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -151,21 +165,23 @@
           </div>
 
           <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="email"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required id="email-address-sign-in" type="email">
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="psw" id="password-sign-in" type="password">
               
-            <button type="submit">Login</button>
-            <label>
-              <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+            <button onclick="signIn();">Sign In</button>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <div class="w3-show-inline-block">
+              <div class="w3-bar">
+                <button id ="specialButton" onclick="createAccount();">Create An Account</button>
+                <button id ="specialButton" onclick="forgotPassword();">Forgot Password?</button>
+              </div>
+              </div> 
+
           </div>
         </form>
       </div>
@@ -196,7 +212,7 @@
         <p>
           <button onclick="signUp();">Sign Up</button>
         </p>
-        <h2>Sign In</h2>
+        <!--<h2>Sign In</h2>
         <p>
           Email Address
           <input id="email-address-sign-in" type="email" />
@@ -207,10 +223,8 @@
         </p>
         <p>
           <button onclick="signIn();">Sign In</button>
-        </p>
+        </p>-->
       </div>
-      <div id="logged-in">
-        <p id="greeting"></p>
         <button onclick="signOut();">Sign Out</button>
       </div>
 
@@ -260,6 +274,10 @@
           if (user) {
         alert('You are signed in! ' + user.uid);
           }
+          else
+          {
+            alert("Incorrect Password");
+          }
         })
 
     function signOut() {
@@ -270,7 +288,21 @@
       }
       
     }     
+
+    function forgotPassword()
+    {
+      var auth = firebase.auth();
+      let email = document.getElementById('email-address').value;
+
+      auth.sendPasswordResetEmail(email).then(function() {
+         //Email sent.
+     }).catch(function(error) {
+        //An error happened.
+      });
+    }
       </script>
+
+    
 
    
     </body>

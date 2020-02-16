@@ -15,3 +15,15 @@ h1 {
   left: 450px;
   top: 740px;
 }
+
+#SD {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+#SF {
+  position: absolute;
+  left: 450px;
+  top: 740px;
+}
