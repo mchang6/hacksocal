@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="../style.css">
         <style>
 
-                         /* Set a style for all buttons */
-                         #submitButton {
+                /* Set a style for all buttons */
+                #submitButton {
                 background-color: #5A7D7C;
                 color: white;
                 padding: 14px 20px;
@@ -73,11 +73,12 @@
          <p>
       
             <center><h2>Community Discussion on Los Angeles, California:</h2></center>
-          <div id="textBox">
-            <ul id="list" text-align: left>
+          
+          <center><div id="textBox">
+            <p id="list" text-align: left>
               
-            </ul>
-          </div>
+            </p>
+          </div></center>
           </p>
           <p>
             Upload an image:
@@ -118,7 +119,7 @@
             let newList = '';
 
             snapshot.forEach(function (document) {
-              newList += '<li class="listItem">' + document.data().text + '</li>';
+              newList += '<p class="listItem">' + document.data().text + '<p>';
             })
 
             document.getElementById('list').innerHTML = newList;
@@ -134,7 +135,7 @@
             let newList = '';
 
             snapshot.forEach(function (document) {
-              newList += '<li class="listItem">' + document.data().text + '</li>';
+              newList += '<p class="listItem">' + document.data().text + '<p>';
             })
 
             document.getElementById('list').innerHTML = newList;
@@ -144,7 +145,11 @@
           function submitImage() {
             let file = document.getElementById('image-upload').files[0];
             let randomID = Math.floor(Math.random() * 10000000)
-            firebase.storage().ref().child('californiaLA/' + randomID).put(file);
+            firebase.storage().ref().child('californiaLA/' + randomID).put(file).then(function () {
+              firebase.firestore().collection('images').doc('californiaLA').set({
+                pictureIDs: firebase.firestore.FieldValue.arrayUnion(randomID.toString()),
+              }, { merge: true });
+            });
           }
         </script>         
            
@@ -154,6 +159,7 @@
                  <div class="mySlides fade">
                    <!--<img src="userImage" style="width:100%">-->
                    <div class="text"> <mark>Los Angeles</mark> </div>
+                   <div id="image-slides"></div>
                  </div>
                  </div>
                  <br>
@@ -171,15 +177,25 @@
 
                  function fillSlides()
                  {
-                  firebase.storage().collection('californiaLA').onSnapshot(function (snapshot) {
-                  let newImage = '';
+                   firebase.firestore().collection('images').doc('californiaLA').get().then(function (doc) {
+                    let pictureIDs = doc.data().pictureIDs;
+                    document.getElementById('image-slides').innerHTML = '';
 
-                  snapshot.forEach(function (file) {
-                    newImage += '<img src="listItem">' + document.files();
-                  })
+                    pictureIDs.forEach(function (pictureID) {
+                      firebase.storage().ref().child('californiaLA/' + pictureID).getDownloadURL().then(function (url) {
+                        document.getElementById('image-slides').innerHTML += '<img src="' + url + '" />'
+                      });
+                    })
+                   });
+                  // firebase.storage().collection('californiaLA').onSnapshot(function (snapshot) {
+                  // let newImage = '';
 
-                  document.getElementById('mySlides').innerHTML = newImage;
-          })}
+                  // snapshot.forEach(function (file) {
+                  //   newImage += '<img src="listItem">' + document.files();
+                  // })
+
+                  // document.getElementById('mySlides').innerHTML = newImage;
+          }
                  
                  function showSlides() {
                    var i;
