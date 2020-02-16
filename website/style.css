@@ -27,3 +27,21 @@ h1 {
   left: 150px;
   top: 415px;
 }
+
+#GrandCanyon {
+  position: absolute;
+  left: 310px;
+  top: 250px;
+}
+
+#Phoenix {
+  position: absolute;
+  left: 280px;
+  top: 575px;
+}
+
+#Tucson {
+  position: absolute;
+  left: 410px;
+  top: 660px;
+}

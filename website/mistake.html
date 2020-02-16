@@ -48,13 +48,13 @@
     </p>
   
   <p>
-    <button onclick="signOut();">
+    <button onclick="signOut()">
       Sign Out
     </button>
   </p>
 
-  <center><iframe src="https://createaclickablemap.com/map.php?&id=88854&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
-<script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script></center>
+  <center><iframe src="https://createaclickablemap.com/map.php?&id=88856&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
+    <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -122,11 +122,11 @@
   })  */
   function signOut()
   {
-    //if(user)
-     // {
+    if(user)
+      {
         firebase.auth.signOut();
         window.location.replace("home.html");
-     // }
+      }
   }
   
 </script>
