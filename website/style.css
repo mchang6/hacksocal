@@ -88,37 +88,18 @@ h1 {
 
 #AtlanticCity{
   position: absolute;
-  left: 480px;
+  left: 440px;
   top: 600px;
 }
 
 #Hoboken{
   position: absolute;
-  left: 560px;
+  left: 520px;
   top: 250px;
 }
 
 #OceanCity{
   position: absolute;
-  left: 440px;
+  left: 400px;
   top: 670px;
 }
-
-#myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
-}
-#myBtn { 
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed/sticky position */
-    top: 20px; /* Place the button at the bottom of the page */
-    right: 30px; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    background-color:  #5A7D7C;/* Set a background color */
-    color: white; /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
-  }
