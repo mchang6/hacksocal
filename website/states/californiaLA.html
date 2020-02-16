@@ -57,10 +57,10 @@
         <p>
             <button onclick="signOut()" id="myBtn" style="display: block;">Map</button>
         </p>
-        <center> <h1> Share your tips & feedback! </h1></center>
+        <center> <h1> Share your tips & feedback!</h1></center>
             <center><div class="feedback"> 
              <input placeholder= "Would you like to share any travel tips or feedback?" id = "input">
-             <button onclick = "uploadData()" id="submitButton" style ="display:inline">
+             <button onclick = "uploadData()" id="submitButton" style ="display:inline"=>
                  Submit 
              </button></center>
          </div>    
@@ -99,9 +99,9 @@
            
            function uploadData()
            {
-             let element = document.getElementByID("input").value;
-             firebase.firestore().collection("text").add({
-               text:value,
+             let element = document.getElementById("input").value;
+             firebase.firestore().collection("LA,CA").add({
+               text:element
              });
            }
         </script>         
