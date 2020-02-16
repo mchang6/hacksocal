@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>San Francisco</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- import the webpage's stylesheet -->
+        <link rel="stylesheet" href="../style.css">
+        <style>
+
+                /* Set a style for all buttons */
+                #submitButton {
+                background-color: #5A7D7C;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 10%;
+                font-size: 18px; /* Increase font size */
+                }
+                   /* Full-width input fields */
+                   input {
+                width: 30%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                  }
+
+                  #myBtn:hover {
+             background-color: #555; /* Add a dark-grey background on hover */
+           }
+           #myBtn { 
+               position: fixed; /* Fixed/sticky position */
+               top: 20px; /* Place the button at the bottom of the page */
+               right: 30px; /* Place the button 30px from the right */
+               z-index: 99; /* Make sure it does not overlap */
+               border: none; /* Remove borders */
+               outline: none; /* Remove outline */
+               background-color:  #5A7D7C;/* Set a background color */
+               color: white; /* Text color */
+               cursor: pointer; /* Add a mouse pointer on hover */
+               padding: 15px; /* Some padding */
+               border-radius: 10px; /* Rounded corners */
+               font-size: 18px; /* Increase font size */
+             }; /* Increase font size */
+
+             ul{
+               list-style-type: none;
+             }
+
+             
+        </style>
+        <!-- import the webpage's javascript file! -->
+        <script src="../script.js" defer></script>
+
+        <link rel="icon" href="../images/banana_large.png">
+    </head>
+    
+    <body onload="startUp();">
+        <p>
+            <button onclick="signOut()" id="myBtn" style="display: block;">Map</button>
+        </p>
+        <center> <h1> Share your tips & feedback!</h1></center>
+            <center><div class="feedback"> 
+             <input placeholder= "Would you like to share any travel tips or feedback?" id = "input">
+             <button onclick = "uploadData()" id="submitButton" style ="display:inline"=>
+                 Submit 
+             </button></center>
+         </div>    
+         <p>
+      
+            <center><h2>Community Discussion on San Francisco, California:</h2></center>
+          
+          <center><div id="textBox">
+            <p id="list" text-align: left>
+              
+            </p>
+          </div></center>
+          </p>
+          <center><p>
+            Upload an image:
+            <input type="file" id="image-upload"/>
+            <button id="submitButton" onclick="submitImage();" >Submit</button>
+
+          </p></center>
+          
+
+             <!-- The core Firebase JS SDK is always required and must be listed first -->
+           <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+         
+         <!-- TODO: Add SDKs for Firebase products that you want to use
+              https://firebase.google.com/docs/web/setup#available-libraries -->
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-storage.js"></script>
+         
+         <script>
+           // Your web app's Firebase configuration
+           var firebaseConfig = {
+             apiKey: "AIzaSyBkmFFdhRFllv8vNwdUJ_SbUl4QYtd5bsc",
+             authDomain: "hack-socal.firebaseapp.com",
+             databaseURL: "https://hack-socal.firebaseio.com",
+             projectId: "hack-socal",
+             storageBucket: "hack-socal.appspot.com",
+             messagingSenderId: "331735296491",
+             appId: "1:331735296491:web:0c84981e1b074a013a51ae"
+           };
+           // Initialize Firebase
+           firebase.initializeApp(firebaseConfig);
+         </script>
+         
+         <script>
+           function startUp()
+           {
+            firebase.firestore().collection('SF,CA').onSnapshot(function (snapshot) {
+            let newList = '';
+
+            snapshot.forEach(function (document) {
+              newList += '<p class="listItem">' + document.data().text + '<p>';
+            })
+
+            document.getElementById('list').innerHTML = newList;
+          })
+           }
+           function uploadData()
+           {
+             let element = document.getElementById("input").value;
+             firebase.firestore().collection("SF,CA").add({
+               text:element
+             });
+             firebase.firestore().collection('SF,CA').onSnapshot(function (snapshot) {
+            let newList = '';
+
+            snapshot.forEach(function (document) {
+              newList += '<p class="listItem">' + document.data().text + '<p>';
+            })
+
+            document.getElementById('list').innerHTML = newList;
+          })}
+
+
+          function submitImage() {
+            let file = document.getElementById('image-upload').files[0];
+            let randomID = Math.floor(Math.random() * 10000000)
+            firebase.storage().ref().child('californiaSF/' + randomID).put(file).then(function () {
+              firebase.firestore().collection('images').doc('californiaSF').set({
+                pictureIDs: firebase.firestore.FieldValue.arrayUnion(randomID.toString()),
+              }, { merge: true });
+            });
+            alert("Image Submitted!");
+          }
+        </script>         
+           
+               
+               <div class="slideshow-container">
+           
+                 <div class="mySlides fade">
+                   <!--<img src="userImage" style="width:100%">-->
+                   <style >mark { 
+                    background-color: rgb(94, 93, 93);
+                    color: white;
+                   } </style>
+
+                   <div class="text"> <mark></mark> </div>
+                   <div id="image-slides"></div>
+                 </div>
+                 </div>
+                 <br>
+                 
+                 <div style="text-align:center">
+                   <span class="dot"></span> 
+                   <span class="dot"></span> 
+                   <span class="dot"></span> 
+                 </div>
+                 
+                 <script>
+                 var slideIndex = 0;
+                 fillSlides();
+                 showSlides();
+
+                 function fillSlides()
+                 {
+                   firebase.firestore().collection('images').doc('californiaSF').get().then(function (doc) {
+                    let pictureIDs = doc.data().pictureIDs;
+                    document.getElementById('image-slides').innerHTML = '';
+
+                    pictureIDs.forEach(function (pictureID) {
+                      firebase.storage().ref().child('californiaSF/' + pictureID).getDownloadURL().then(function (url) {
+                        document.getElementById('image-slides').innerHTML += '<img src="' + url + '" />'
+                      });
+                    })
+                   });
+                  // firebase.storage().collection('californiaSF').onSnapshot(function (snapshot) {
+                  // let newImage = '';
+
+                  // snapshot.forEach(function (file) {
+                  //   newImage += '<img src="listItem">' + document.files();
+                  // })
+
+                  // document.getElementById('mySlides').innerHTML = newImage;
+          }
+                 
+                 function showSlides() {
+                   var i;
+                   var slides = document.getElementsByClassName("mySlides");
+                   var dots = document.getElementsByClassName("dot");
+                   for (i = 0; i < slides.length; i++) {
+                     slides[i].style.display = "none";  
+                   }
+                   slideIndex++;
+                   if (slideIndex > slides.length) {slideIndex = 1}    
+                   for (i = 0; i < dots.length; i++) {
+                     dots[i].className = dots[i].className.replace(" active", "");
+                   }
+                   slides[slideIndex-1].style.display = "block";  
+                   dots[slideIndex-1].className += " active";
+                   setTimeout(showSlides, 5000); // Change image every 5 seconds
+                 }
+           
+                 </script>
+
+                <div class="footer">
+                  <div class="row">
+                    <div class="column">
+                      <p class="footerTitle">TravelPix</p>
+                      <p> PVNet Suite 229 <br> 550 Deep Valley Drive, <br> Rolling Hills Estates, CA <br> 90274 </p>
+                    </div>
+                    <div class="column">
+                      <p class="footerTitle">Contact Us</p>
+                      <p>1-909-768-4118</p>
+                      <p>info@travelpix.org</p>
+                    </div>
+                    <div class="column">
+                      <img class="logo" src="/images/Bool_black.png" width="190px" height="190px">
+                    </div>
+                  </div>
+                </div>
+           </body> 
+</html>
