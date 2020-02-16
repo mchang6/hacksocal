@@ -203,7 +203,7 @@
             <input type="password" placeholder="Create Password" id="password" type="password" class="create">
 
             <button  type="button" onclick="signIn();" class="initial" >Sign In</button>
-            <button id="create type="button" onclick="signUp();" class="create">Create Account</button>
+            <button type="button" onclick="signUp();" class="create">Create Account</button>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
@@ -273,7 +273,7 @@
     firebase.auth().createUserWithEmailAndPassword(email, password);
     }
 
-  //allows for enter key to trigger button
+  /*//allows for enter key to trigger button
   var input = document.getElementById("password");
   input.addEventListener("keyup", function(event) {
   //13 is the Enter key
@@ -281,7 +281,7 @@
     event.preventDefault();
     document.getElementById("create").click();
   }
-});
+});*/
 
   function signIn() {
           let email = document.getElementById('email-address-sign-in').value;

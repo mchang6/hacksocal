@@ -53,7 +53,7 @@
         <link rel="icon" href="../images/banana_large.png">
     </head>
     
-    <body>
+    <body onload="startUp();">
         <p>
             <button onclick="signOut()" id="myBtn" style="display: block;">Map</button>
         </p>
@@ -64,13 +64,13 @@
                  Submit 
              </button></center>
          </div>    
-         <center><p>
+         <p>
       
-            <h2>Community Discussion:</h2>
-            <ul id="list">
+            <center><h2>Community Discussion on Los Angeles, California:</h2></center>
+            <ul id="list" text-align: left>
               
           </ul>
-          </p></center>
+          </p>
 
              <!-- The core Firebase JS SDK is always required and must be listed first -->
            <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
@@ -96,14 +96,33 @@
          </script>
          
          <script>
-           
+           function startUp()
+           {
+            firebase.firestore().collection('LA,CA').onSnapshot(function (snapshot) {
+            let newList = '';
+
+            snapshot.forEach(function (document) {
+              newList += '<li>' + document.data().text + '</li>';
+            })
+
+            document.getElementById('list').innerHTML = newList;
+          })
+           }
            function uploadData()
            {
              let element = document.getElementById("input").value;
              firebase.firestore().collection("LA,CA").add({
                text:element
              });
-           }
+             firebase.firestore().collection('LA,CA').onSnapshot(function (snapshot) {
+            let newList = '';
+
+            snapshot.forEach(function (document) {
+              newList += '<li>' + document.data().text + '</li>';
+            })
+
+            document.getElementById('list').innerHTML = newList;
+          })}
         </script>         
            </body>
  </html>

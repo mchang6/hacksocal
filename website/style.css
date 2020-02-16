@@ -104,6 +104,24 @@ h1 {
   top: 670px;
 }
 
+#Denver{
+  position: absolute;
+  left: 600px;
+  top: 310px;
+}
+
+#Boulder{
+  position: absolute;
+  left: 450px;
+  top: 300px;
+}
+
+#Aspen{
+  position: absolute;
+  left: 200px;
+  top: 350px;
+}
+
 .footer {
   left: 0;
   bottom: 0;
