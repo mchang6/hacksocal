@@ -125,10 +125,13 @@ h1 {
   z-index: 99;
 }
 
+#list {
+  list-style-type: none;
+}
+
 .listItem {
   padding-top: 20px;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  list-style-type: none;
 }
 
 #textBox {
