@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  font-style: italic;
+  font-style: bold;
   color: #373fff;
 }
 
@@ -70,20 +70,20 @@ h1 {
 
 #Detroit {
   position: absolute;
-  left: 760px;
-  top: 400px;
+  left: 690px;
+  top: 700px;
 }
 
 #AnnArbor {
   position: absolute;
-  left: 760px;
-  top: 400px;
+  left: 645px;
+  top: 705px;
 }
 
 #TraverseCity {
   position: absolute;
-  left: 760px;
-  top: 400px;
+  left: 470px;
+  top: 380px;
 }
 
 #AtlanticCity{
@@ -112,4 +112,21 @@ h1 {
   background-color: grey;
   color: white;
   text-align: center;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
 }

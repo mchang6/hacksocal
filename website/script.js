@@ -8,3 +8,15 @@ function signOut()
 {
     window.location.replace("/map.html");
 }
+
+function signedIn()
+{
+    if(user)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
