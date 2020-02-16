@@ -10,9 +10,8 @@ h1 {
   color: #373fff;
 }
 
-#Ca-Dot {
+#LA {
   position: absolute;
-  top: 100%;
-  left: 33%;
-  z-index: 1
+  left: 450px;
+  top: 740px;
 }
