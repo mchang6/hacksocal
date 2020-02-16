@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Hi!</title>
+    <title>Hello!</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +17,27 @@
     <iframe src="https://createaclickablemap.com/map.php?&id=88834&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
 <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
     
-    <p>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBkmFFdhRFllv8vNwdUJ_SbUl4QYtd5bsc",
+    authDomain: "hack-socal.firebaseapp.com",
+    databaseURL: "https://hack-socal.firebaseio.com",
+    projectId: "hack-socal",
+    storageBucket: "hack-socal.appspot.com",
+    messagingSenderId: "331735296491",
+    appId: "1:331735296491:web:0c84981e1b074a013a51ae"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
   </body>
 </html>
