@@ -16,7 +16,65 @@
     </head>
     
     <body>
-        <h1> Share your pictures and comments! </h1>
-        
+       
+        <center> <h1> Share your tips & feedback! </h1></center>
+            <center><div class="feedback"> 
+             <input placeholder= "Would you like to share any travel tips or feedback?" id = "input">
+             <button onclick = "uploadData()" id="submitButton" style ="display:inline">
+                 Submit 
+             </button></center>
+         </div>    
+         <p>
+      
+            Community Discussion:
+            <ul id="list">
+              <li></li>
+          </ul>
+          </p>
+
+             <!-- The core Firebase JS SDK is always required and must be listed first -->
+           <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+         
+         <!-- TODO: Add SDKs for Firebase products that you want to use
+              https://firebase.google.com/docs/web/setup#available-libraries -->
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+              <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+         
+         <script>
+           // Your web app's Firebase configuration
+           var firebaseConfig = {
+             apiKey: "AIzaSyBkmFFdhRFllv8vNwdUJ_SbUl4QYtd5bsc",
+             authDomain: "hack-socal.firebaseapp.com",
+             databaseURL: "https://hack-socal.firebaseio.com",
+             projectId: "hack-socal",
+             storageBucket: "hack-socal.appspot.com",
+             messagingSenderId: "331735296491",
+             appId: "1:331735296491:web:0c84981e1b074a013a51ae"
+           };
+           // Initialize Firebase
+           firebase.initializeApp(firebaseConfig);
+         </script>
+         
+         <script>
+           
+           function uploadData()
+           {
+             let element = document.getElementByID("input").value;
+             firebase.firestore().collection("text").add({
+               text:value,
+             });
+           }
+            
+            firebase.firestore().collection("text").onSnapshot(function(snapshot){
+            snapshot.forEach(function(document){
+                newList = "";
+                newList +='<li>' + document.data().text+"</li>";
+            })
+            document.getElementById("list").innerHTML = newList;)
+         </script>
+
+         
+           </body>
+ </html>
     </body>
 </html>
