@@ -11,8 +11,8 @@ h1 {
 }
 
 #Ca-Dot {
-  position:absolute;
-  top: 10px;
-  left: 10px;     
-  z-index: 1;
+  position: absolute;
+  top: 100%;
+  left: 33%;
+  z-index: 1
 }
