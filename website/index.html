@@ -6,15 +6,16 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
     
       <!-- import the webpage's stylesheet -->
-      <link rel="stylesheet" href="../style.css">
+      <link rel="stylesheet" href="./style.css">
     
       <!-- import the webpage's javascript file! -->
-      <script src="../script.js"></script>
+      <script src="./script.js"></script>
 
       <link rel="icon" href="../images/banana_large.png">
       <style>
         body, html {
             height: 100%;
+            margin: 0em
           }
           .initial
           {
@@ -172,7 +173,8 @@
       </style>
  
     </head>
-    <body>
+    <body onload="start();">
+
       <p>
       <button type="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="myBtn" >Sign In</button>
       </p>
@@ -199,9 +201,9 @@
             
             <!--when creating account-->
             <input type="password" placeholder="Create Password" id="password" type="password" class="create">
-            
-            <button type="button" onclick="signIn();" class="initial" >Sign In</button>
-            <button type="button" onclick="signUp();" class="create">Create Account</button>
+
+            <button id="signIn type="button" onclick="signIn();" class="initial" >Sign In</button>
+            <button id="create" type="button" onclick="signUp();" class="create">Create Account</button>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
@@ -221,11 +223,11 @@
         </form>
       </div>
       <center><div class = "parallax"></div>
-      <div style="height:30px;background-color:white;font-size:36px; font-family: sans sarif">
+      <div style="height:15px;background-color:white;font-size:36px; font-family: sans sarif">
         
         </div></center>
       <center><div style="color: #777;background-color:white;
-      text-align:center;padding:50px 80px;text-align: justify;">
+      text-align:center;padding:30px 80px;text-align: justify; font-size: large; margin-right:150px; margin-left:150px;">
           <h1 style="text-align:center;">TravelPix</h1>
         Become a member to share pictures and tips from your travels around the world,
         joining a welcoming community of tourists who have a passion of seeing the 
@@ -270,6 +272,17 @@
   
     firebase.auth().createUserWithEmailAndPassword(email, password);
     }
+
+  //allows for enter key to trigger button
+  var input = document.getElementById("password");
+  input.addEventListener("keyup", function(event) {
+  //13 is the Enter key
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById("create").click();
+  }
+});
+
   function signIn() {
           let email = document.getElementById('email-address-sign-in').value;
           let password = document.getElementById('password-sign-in').value;
@@ -283,15 +296,26 @@
           }
         })
 
+      //allows for enter key to trigger button
+      var input = document.getElementById("password-sign-in");
+      input.addEventListener("keyup", function(event) {
+      //13 is the Enter key
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("signIn").click();
+      }
+    });
     function forgotPassword()
     {
       var auth = firebase.auth();
       let email = document.getElementById('email-address').value;
       firebase.auth().sendPasswordResetEmail(email);
+      alert("Check your email for further instructions");
     }
 
     function start()
         {
+          firebase.auth().signOut();
           for(let i=0; i<document.getElementsByClassName("initial").length; i++)
           {
             document.getElementsByClassName("initial")[i].style.display = "inline";
@@ -300,7 +324,6 @@
           {
             document.getElementsByClassName("create")[i].style.display = "none";
           }
-          firebase.auth().signOut();
         }
         function createAccount()
         {
@@ -319,13 +342,16 @@
       <div class="footer">
         <div class="row">
           <div class="column">
-            <p id="footerTitle">TravelPix</p>
+            <p class="footerTitle">TravelPix</p>
+            <p> PVNet Suite 229 <br> 550 Deep Valley Drive, <br> Rolling Hills Estates, CA <br> 90274 </p>
           </div>
           <div class="column">
-            <p> id="contact">Contact Us</p>
+            <p class="footerTitle">Contact Us</p>
+            <p>1-909-768-4118</p>
+            <p>info@travelpix.org</p>
           </div>
           <div class="column">
-            <img src="/images/Bool_black.png" width="20px" height="200px" >
+            <img class="logo" src="/images/Bool_black.png" width="190px" height="190px">
           </div>
         </div>
       </div>

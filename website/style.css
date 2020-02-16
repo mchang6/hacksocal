@@ -107,11 +107,16 @@ h1 {
 .footer {
   left: 0;
   bottom: 0;
-  height: 200px;
+  height: 220px;
   width: 100%;
   background-color: grey;
   color: white;
   text-align: center;
+}
+
+.footerTitle {
+  font-size: 25px;
+  color: rgb(216, 214, 216);
 }
 
 .column {
@@ -123,6 +128,12 @@ h1 {
   content: "";
   display: table;
   clear: both;
+}
+
+.logo {
+  border-radius: 50%;
+  margin: 10px;
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width: 600px) {
