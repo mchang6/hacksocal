@@ -125,10 +125,6 @@ h1 {
   z-index: 99;
 }
 
-#list {
-  list-style-type: none;
-}
-
 .listItem {
   padding-top: 20px;
   font-family: "Comic Sans MS", cursive, sans-serif;
@@ -147,6 +143,7 @@ h1 {
   background-color: grey;
   color: white;
   text-align: center;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
 .footerTitle {
@@ -175,4 +172,10 @@ h1 {
   .column {
     width: 100%;
   }
+}
+
+#image-slides img {
+  max-height: 100px;
+  max-width: 100px;
+  align-self: middle;
 }
