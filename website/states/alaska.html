@@ -26,6 +26,27 @@
                border-radius: 10px; /* Rounded corners */
                font-size: 18px; /* Increase font size */
              }; /* Increase font size */
+
+             /* Set a style for all buttons */
+                #submitButton {
+                background-color: #5A7D7C;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                }
+
+                      /* Full-width input fields */
+                input {
+                width: 75%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                  }
+
          </style>
         <!-- import the webpage's javascript file! -->
         <script src="../script.js" defer></script>
@@ -39,7 +60,7 @@
             <button onclick="signOut()" id="myBtn" style="display: block;">Map</button>
         </p>
         <img class="state" src="../images/AlaskaBlack.png" alt="Map of Alaska" height="567" width="1079">
-
+        <br><br><br>
     </body>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -205,10 +226,11 @@
 
           
           </script>
+            <br><br><br>
             <center><h1>Travel Tips & Feedback</h2></center>
            <center><div class="feedback"> 
             <input placeholder= "Would you like to share any travel tips or feedback?" id = "input">
-            <button onclick = "uploadData()">
+            <button onclick = "uploadData()" id="submitButton" style ="display:inline">
                 Submit 
             </button></center>
         </div>    
