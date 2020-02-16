@@ -1,12 +1,22 @@
 <html>
     <head>
+      <title>TravelPix</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <!-- import the webpage's stylesheet -->
+      <link rel="stylesheet" href="../style.css">
+    
+      <!-- import the webpage's javascript file! -->
+      <script src="../script.js" defer></script>
       <style>
         body, html {
             height: 100%;
           }
           .initial
           {
-            display: inline-block;
+            display: inline;
           }
           .create
           {
@@ -25,25 +35,25 @@
             background-repeat: no-repeat;
             background-size: cover;
           }
-
           #myBtn:hover {
-        background-color: #555; /* Add a dark-grey background on hover */
-      }
-      #myBtn { 
-          position: fixed; /* Fixed/sticky position */
-          top: 20px; /* Place the button at the bottom of the page */
-          right: 30px; /* Place the button 30px from the right */
-          z-index: 99; /* Make sure it does not overlap */
-          border: none; /* Remove borders */
-          outline: none; /* Remove outline */
-          background-color:  #5A7D7C;/* Set a background color */
-          color: white; /* Text color */
-          cursor: pointer; /* Add a mouse pointer on hover */
-          padding: 15px; /* Some padding */
-          border-radius: 10px; /* Rounded corners */
-          font-size: 18px; /* Increase font size */
-      }
-      
+            background-color: #555; /* Add a dark-grey background on hover */
+          }
+          #myBtn { 
+              display: none; /* Hidden by default */
+              position: fixed; /* Fixed/sticky position */
+              top: 20px; /* Place the button at the bottom of the page */
+              right: 30px; /* Place the button 30px from the right */
+              z-index: 99; /* Make sure it does not overlap */
+              border: none; /* Remove borders */
+              outline: none; /* Remove outline */
+              background-color:  #5A7D7C;/* Set a background color */
+              color: white; /* Text color */
+              cursor: pointer; /* Add a mouse pointer on hover */
+              padding: 15px; /* Some padding */
+              border-radius: 10px; /* Rounded corners */
+              font-size: 18px; /* Increase font size */
+            }
+
       /* Set a style for all buttons */
         button {
           background-color: #5A7D7C;
@@ -158,50 +168,36 @@
           }
         }
       </style>
-      <script>
-
-        function start()
-        {
-          document.getElementById("initial").style.display = "inline-block";
-          document.getElementById("create").style.display = "none";
-          firebase.auth.signOut();
-        }
-        function createAccount()
-        {
-          document.getElementById("initial").style.display = "none";
-          document.getElementById("create").style.display = "inline-block";
-        }
-
-        </script>
+ 
     </head>
-    <body onload="start();">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="myBtn">Sign In</button>
+    <body>
+      <button type="button" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="myBtn" >Sign In</button>
 
       <div id="id01" class="modal">
         
         <form class="modal-content animate" action="/action_page.php" method="post">
           <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="images/Bool_black.png" alt="Avatar" class="avatar">
+            <img src="images/Bool_black.png" alt="Bool" class="avatar">
           </div>
 
           <div class="container">
             <label for="email"><b>Email</b></label>
             <!-- signing in -->
-            <input type="text" placeholder="Enter Email" name="email"  id="email-address-sign-in" type="email" class="initial">
+            <input type="text" placeholder="Enter Email" id="email-address-sign-in" type="email" class="initial">
             <!-- creating account-->
-            <input type="text" placeholder="Enter Email" name="email" id="email-address" type="email" class="create">
+            <input type="text" placeholder="Enter Email" id="email-address" type="email" class="create">
 
             <label for="psw"><b>Password</b></label>
             
             <!--when signing in--> 
-            <input type="password" placeholder="Enter Password" name="psw" id="password-sign-in" type="password" class="initial">
+            <input type="password" placeholder="Enter Password" id="password-sign-in" type="password" class="initial">
             
             <!--when creating account-->
-            <input type="password" placeholder="Create Password" name="psw"  id="password" type="password" class="create">
+            <input type="password" placeholder="Create Password" id="password" type="password" class="create">
             
-            <button onclick="signIn();" class="initial">Sign In</button>
-            <button onclick="signUp();" class="create">Create Account</button>
+            <button type="button" onclick="signIn();" class="initial" >Sign In</button>
+            <button type="button" onclick="signUp();" class="create">Create Account</button>
           </div>
 
           <div class="container" style="background-color:#f1f1f1">
@@ -209,10 +205,10 @@
             <div class="w3-show-inline-block">
               <div class="w3-bar">
                
-                  <button id ="specialButton" onclick="createAccount();" align="left" class="initial">Create an Account</button>
-                  <button id ="specialButton" onclick="forgotPassword();" style="float: right;" class="initial">Forgot Password?</button>
+                  <button id ="specialButton" onclick="createAccount();" align="left" class="initial" type="button">Create an Account</button>
+                  <button id ="specialButton" onclick="forgotPassword();" style="float: right;" class="initial" type="button">Forgot Password?</button>
                   
-                  <center><button onclick="start();" class = "create">Already Have an Account?</button></center>
+                  <center><button onclick="start();" class = "create" type="button">Already Have an Account?</button></center>
               </div>
             
             </div> 
@@ -232,35 +228,9 @@
         beauties of the planet we share.
       </div></center>
         
-      <div class="parallax"></div>
-    <div class = "signIn">
-      <div id="logged-out">
-        <h2>Create an Account</h2>
-        <p>
-          Email Address
-          <input id='email-address' type="email" />
-        </p>
-        <p>
-          Password
-          <input id='password' type="password" />
-        </p>
-        <p>
-          <button onclick="signUp();">Sign Up</button>
-        </p>
-        <!--<h2>Sign In</h2>
-        <p>
-          Email Address
-          <input id="email-address-sign-in" type="email" />
-        </p>
-        <p>
-          Password
-          <input id="password-sign-in" type="password" />
-        </p>
-        <p>
-          <button onclick="signIn();">Sign In</button>
-        </p>-->
-      </div>
-        <button onclick="signOut();">Sign Out</button>
+      +<div class="parallax"></div>
+
+        <!--<button onclick="signOut();" type="button">Sign Out</button>-->
       </div>
 
 
@@ -302,7 +272,7 @@
           let email = document.getElementById('email-address-sign-in').value;
           let password = document.getElementById('password-sign-in').value;
   
-          firebase.auth().signInUserWithEmailAndPassword(email, password);
+          firebase.auth().signInWithEmailAndPassword(email, password);
         }
   
     firebase.auth().onAuthStateChanged(function (user) {
@@ -311,28 +281,40 @@
           }
         })
 
-    function signOut() {
-      if(user)
-      {
-        firebase.auth().signOut();
-        alert("You are signed out!");
-      }
-      
-    }     
-
     function forgotPassword()
     {
       var auth = firebase.auth();
       let email = document.getElementById('email-address').value;
-
-      auth.sendPasswordResetEmail(email).then(function() {
-         //Email sent.
-     }).catch(function(error) {
-        //An error happened.
-      });
+      firebase.auth().sendPasswordResetEmail(email);
     }
-      </script>
 
+    function start()
+        {
+          for(let i=0; i<document.getElementsByClassName("initial").length; i++)
+          {
+            document.getElementsByClassName("initial")[i].style.display = "inline";
+          }
+          for (let i=0; document.getElementsByClassName("create").length; i++)
+          {
+            document.getElementsByClassName("create")[i].style.display = "none";
+          }
+          firebase.auth().signOut();
+        }
+        function createAccount()
+        {
+          for(let i=0; i<document.getElementsByClassName("initial").length; i++)
+          {
+            document.getElementsByClassName("initial")[i].style.display = "none";
+          }
+          for (let i=0; document.getElementsByClassName("create").length; i++)
+          {
+            document.getElementsByClassName("create")[i].style.display = "inline";
+          }
+        }
+      </script>
+      <div id="">
+      
+      </div>
     
 
    
